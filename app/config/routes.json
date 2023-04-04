@@ -1,0 +1,77 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/records1",
+      "page": "layouts/records_list",
+      "layout": ""
+    },
+    {
+      "path": "/records2",
+      "page": "layouts/records_detail"
+    },
+    {
+      "path": "/records1",
+      "page": "records1",
+      "layout": "records_list"
+    },
+    {
+      "path": "/records_list",
+      "page": "records1"
+    },
+    {
+      "path": "/records_test",
+      "page": "records_test",
+      "layout": "records_list"
+    },
+    {
+      "path": "/records_multi",
+      "page": "records_multi",
+      "layout": "records_list"
+    },
+    {
+      "path": "/records_detail",
+      "page": "records_detail",
+      "layout": "records_single"
+    },
+    {
+      "path": "/dental",
+      "page": "dental",
+      "layout": "dental_records"
+    },
+    {
+      "path": "/images",
+      "name": "images"
+    },
+    {
+      "path": "/img_viewer",
+      "page": "img_viewer",
+      "layout": "images"
+    },
+    {
+      "path": "/paging_frontend",
+      "page": "paging_frontend",
+      "layout": "paging_layout2"
+    },
+    {
+      "path": "/paging_front3",
+      "page": "paging_front3",
+      "layout": "paging_layout2"
+    },
+    {
+      "path": "/paging_front4",
+      "page": "paging_front4",
+      "layout": "records_list"
+    },
+    {
+      "path": "/paging5_front",
+      "page": "paging5_front",
+      "layout": "paging4"
+    }
+  ]
+}

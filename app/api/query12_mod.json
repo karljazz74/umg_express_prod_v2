@@ -1,0 +1,40 @@
+{
+  "name": "query_bild2",
+  "module": "dbupdater",
+  "action": "custom",
+  "options": {
+    "connection": "db_remote",
+    "sql": {
+      "query": "SELECT images.id_images, images.image_number, CONCAT (images.filepath, filename) AS thumb, images.figure_caption -> 0 ->>'value' AS caption,  images.filename, images.fk_records FROM db_schema.records INNER JOIN db_schema.images ON images.fk_records = records.id_record ORDER BY id_images ASC",
+       "params": []
+        }
+      },
+      "output": true,
+      "meta": [
+    {
+      "type": "text",
+      "name": "thumb"
+    },
+    {
+      "type": "number",
+      "name": "id_images"
+    },
+    {
+      "type": "text",
+      "name": "image_number"
+    },
+    {
+      "type": "string",
+      "name": "figure_caption"
+    },
+    {
+      "type": "number",
+      "name": "fk_records"
+    },
+   {
+      "type": "text",
+      "name": "filename"
+    }
+  ],
+  "outputType": "array"
+ }

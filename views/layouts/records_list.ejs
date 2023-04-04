@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="ac:route" content="/records_multi">
+    <base href="/">
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Records List View</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+    <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer></script>
+    <link rel="stylesheet" href="/dmxAppConnect/dmxBootstrap5TableGenerator/dmxBootstrap5TableGenerator.css" />
+</head>
+<style>
+/*from tutorial https://stackoverflow.com/questions/25448511/pure-css-ellipsis-for-three-or-more-lines-of-text */
+@import "compass/css3";
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+* {
+  margin: 0;
+  padding: 0;
+  @include box-sizing(border-box);
+}
+
+body {
+  padding: 3em 0em;
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #cf6824;
+  background: #f7f5eb;
+}
+
+$font-size: auto;
+$line-height: 0.4;
+$lines-to-show: 5;
+
+td {
+widht: 80;
+max-width: 100;
+max-height: 30;
+}
+
+td:nth-child(1) { width: auto ;}   /* ID */
+td:nth-child(2) { width: 10% ;}
+td:nth-child(3) { width: 10% ;}
+td:nth-child(4) { width: auto ;}  /* designación */
+td:nth-child(5) { width: 5% ;}
+td:nth-child(6) { width: auto ;}  /* IMAGEN */
+td:nth-child(7) { width: 10% ;}  /* fig. numero CAPTION */
+td:nth-child(8) { width: auto ;}  /* LOTE */
+td:nth-child(9) { width: 10% ;} /* cuadrante */
+td:nth-child(10) { width: 5% ;} /*fecha registro */
+td:nth-child(11) { width: 25% ;} /*f descripción */
+td:nth-child(12) { width: 5% ;} /*f timestamp */
+td:nth-child(12) { width: 5% ;} /*f informe_designation */
+
+.modern {
+max-width: 120;
+max-width: 60;
+}
+
+h5 {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: auto;
+  height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: 2 px;
+  line-height: $line-height;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CSS added from https://getbutterfly.com/client-side-html-pagination-with-javascript/ */
+.paged-element {
+  text-align: center;
+  h2 {
+    background-color: #e2e2e2;
+    height: 100px;
+    line-height: 100px;
+  }
+}
+
+.paginationNav {
+  text-align: center;
+  font-size: 1.2em;
+  a {
+    display:inline-block;
+    color: #ffffff;
+    margin: 0 auto;
+    height: 46px;
+    width: 46px;
+    text-align: center;
+    line-height: 46px;
+    margin-right: 1px;
+    background-color: #2c2c2c;
+    &.active {
+      background-color: #0068BB;
+    }
+  }
+  span {
+    padding: 0 .5em;
+    font-style: italic;
+  }
+}
+</style>
+<body is="dmx-app" id="main">
+    <dmx-serverconnect id="query_JSON_rem" url="/api/query_JSON5_copy"></dmx-serverconnect>
+    <dmx-serverconnect id="query_json5" url="/api/query_JSON5"></dmx-serverconnect>
+    <dmx-serverconnect id="records2" url="/api/queryJSON"></dmx-serverconnect>
+    <dmx-serverconnect id="records_list" url="/api/queryJSON"></dmx-serverconnect>
+
+    <header class="bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Table: Multiple Records List View 3</h3>
+            </div>
+        </div>
+    </div>
+
+    <include file="partials/formatter.js"></include>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+             <div class="table-responsive">
+              <table id="pager" class="wp-list-table widefat striped posts">
+                 <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Objeto</th>
+                            <th>Descriptor</th>
+                            <th>Designación</th>
+                            <th>Estatus Objeto</th>
+                            <th>imagen</th>
+                            <th>Fig. Num.</th>
+                            <th>Núm. Lote</th>
+                            <th>Cuadrante</th>
+                            <th>Fecha Registro</th>
+                            <th>Descripción</th>
+                            <th>Fecha/Hora Captura</th>
+                            <th>Designación INAH</th>
+                        </tr>
+                    </thead>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_JSON_rem.data.custom" id="tableRepeat2">
+                        <tr>
+                            <td dmx-text="id_record"></td>
+                            <td style="white-space: normal; text-overflow:ellipsis; overflow: normal; max-width:1px;" dmx-text="obj_label[0].value" dmx-text="obj_name"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="obj_label[0].value"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="obj_designation"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="obj_status"></td>
+                            <td><a><img width="100" dmx-bind:src="query_JSON_rem.data.custom[$index].thumb"></a></td>
+                            <td style="white-space: normal; text-overflow:ellipsis; overflow: normal; max-width:1px;" dmx-text="caption"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lote_number"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="find_location"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="date_documented"></td>
+                            <td class="modern"><h5 dmx-text="obj_description"></h5></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="set_timestamp"></td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="informe_designation"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+              </div>
+          </div>
+        </div>
+    </div>
+    <main>
+        <div is="dmx-view" id="content">
+            <%- await include(content, locals); %>
+        </div>
+    </main>
+
+<script>
+(function(){
+  paginateChildren($('.pagination-example'));
+}(jQuery));
+
+function paginateChildren(parentElement) {
+    var page = 1;
+    var currentElements;
+    var offsetStart;
+    var offsetEnd;
+    var currentPage = 1;
+    var elementsPerPage = 6;
+    var elements = parentElement.find($('.paged-element'));
+    var nmbrOfPages = Math.ceil(elements.length / elementsPerPage);
+    var displayNav = function () {
+        htmlNav = '<div class="paginationNav pull-right">';
+        htmlNav += '<span>' + currentPage + ' of ' + nmbrOfPages + '</span><br />';
+        htmlNav += '<a href="#" title="Previous" rel="" class="prev"><i class="fa fa-angle-left fa-lg"></i></a>';
+        htmlNav += '<a href="#" title="Next" rel="" class="next active"><i class="fa fa-angle-right fa-lg"></i></a>';
+        htmlNav += '</div>';
+        if (!$(parentElement).find('.paginationNav').length) {
+            $(parentElement).append(htmlNav);
+        }
+    };
+    $(parentElement).on('click', '.paginationNav a.prev', function (e) {
+        e.preventDefault();
+        page = currentPage > 1 ? parseInt(currentPage) - 1 : 1;
+        displayPage(page);
+    });
+    $(parentElement).on('click', '.paginationNav a.next', function (e) {
+        e.preventDefault();
+        page = currentPage < nmbrOfPages ? parseInt(currentPage) + 1 : nmbrOfPages;
+        displayPage(page);
+    });
+    var displayPage = function (page) {
+        if (currentPage != page || page == 1) {
+            currentPage = parseInt(page);
+            $('.paginationNav span', parentElement).html(currentPage + ' of ' + nmbrOfPages);
+            var $prevButton = $('.paginationNav a.prev');
+            var $nextButton = $('.paginationNav a.next');
+            if (currentPage == 1 && nmbrOfPages > 1) {
+                if ($prevButton.hasClass('active')) {
+                    $prevButton.removeClass('active');
+                }
+                $nextButton.addClass('active');
+            } else if (currentPage > 1 && currentPage < nmbrOfPages) {
+                $prevButton.addClass('active');
+                $nextButton.addClass('active');
+            } else if (nmbrOfPages > 1 && currentPage == nmbrOfPages) {
+                $prevButton.addClass('active');
+                if ($nextButton.hasClass('active')) {
+                    $nextButton.removeClass('active');
+                }
+            }
+            offsetStart = (page - 1) * elementsPerPage;
+            offsetEnd = page * elementsPerPage;
+            if (currentElements) {
+                currentElements.hide();
+            } else {
+                elements.hide();
+            }
+            currentElements = elements.slice(offsetStart, offsetEnd);
+            currentElements.fadeIn();
+        }
+    };
+    if (page.length <= 0 || page < 1 || page > nmbrOfPages) {
+        page = 1;
+    }
+    displayPage(page);
+    if (nmbrOfPages > 1) {
+        displayNav();
+    }
+}
+</script>
+
+    <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

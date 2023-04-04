@@ -1,0 +1,496 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="index" appConnect="local" -->
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="cdn" is="dmx-app" id="index" appConnect="local" -->
+<!DOCTYPE html>
+<html lang="en">
+<title>UxulMassGrave</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+    <app.use(express.static('assets')) >
+</script>
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    w3-col clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+
+        .w3-justify {
+            margin: 10;
+            padding-left: 10
+        }
+    }
+</style>
+
+<head>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="#home" class="w3-bar-item w3-button w3-padding-large">INICIO</a>
+            <a href="#discover" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HALLAZGO</a>
+
+            <!-- Btn w/dropdown begins -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="More">APPS <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#apps" class="w3-bar-item w3-button">APPS</a>
+                    <a href="#apps" class="w3-bar-item w3-button">Directus CMS</a>
+                    <a href="#directus" class="w3-bar-item w3-button">Drupal 9</a>
+                </div>
+            </div>
+            <a href="#pgadmin" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BASE DE DATOS</a>
+            <!-- CPG Added Single Record and Multirecord views dropdown -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="More">REGISTROS<i
+                        class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="/records_multi" class="w3-bar-item w3-button">Registros, Listado</a>
+                    <a href="/records_detail" class="w3-bar-item w3-button">Registros, Detalles</a>
+                    <a href="/dental" class="w3-bar-item w3-button">Registros Dentales</a>
+                    <a href="/img_viewer" class="w3-bar-item w3-button">Listado Imágenes</a>
+                </div>
+            </div>
+
+            <!-- Btn w/dropdown begins -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="More">EQUIPO <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#team" class="w3-bar-item w3-button">EQUIPO</a>
+                    <a href="#NPS" class="w3-bar-item w3-button">Dr. Nicolaus Seefeld</a>
+                    <a href="#LJH" class="w3-bar-item w3-button">Lic. Leticia Jiménez Hernández</a>
+                    <a href="#CPG" class="w3-bar-item w3-button">Dr. des.Carlos Pallan Gayol</a>
+                    <a href="#FCZ" class="w3-bar-item w3-button">Lic. Félix Camacho Zamora</a>
+                    <a href="#GPD" class="w3-bar-item w3-button">Rest. Gaspar Panti Dzul</a>
+                    <a href="#ACA" class="w3-bar-item w3-button">Rest. Anabel Cambranis Alfaro</a>
+                    <a href="#VHC" class="w3-bar-item w3-button">Rest. Valentín Hernández Canche</a>
+                    <a href="#YEF" class="w3-bar-item w3-button">Lic. Yolanda Espinosa Fernández</a>
+                </div>
+            </div>
+            <!-- Btn w/dropdown ends -->
+            <!-- Btn w/dropdown begins -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="features">CARACTERÍSTICAS <i
+                        class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#catalog" class="w3-bar-item w3-button">Catálogo Elementos óseos</a>
+                    <a href="#single_rec" class="w3-bar-item w3-button">Registros vista de detalles</a>
+                    <a href="#map" class="w3-bar-item w3-button">Mapa Interactivo</a>
+                    <a href="#3d_models" class="w3-bar-item w3-button">Modelos 3D selectos</a>
+                </div>
+            </div>
+            <!-- Btn w/dropdown ends -->
+            <a href="#upcoming" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONFERENCIAS</a>
+            <a href="#news" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NOTICIAS</a>
+            <a href="#publications" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PUBLICACIONES</a>
+
+            <!--- CPG: Search button top top right corner -->
+            <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i
+                    class="fa fa-search"></i></a>
+        </div>
+    </div>
+
+    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+        <a href="#discover" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Hallazgo</a>
+        <a href="#apps" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Aplicaciones</a>
+        <a href="#pgadmin" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Base de Datos</a>
+        <a href="#catalog" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Catálogo</a>
+        <a href="#single_rec" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Registros, Vista de
+            Detalles</a>
+        <a href="#map" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Mapa Interactivo</a>
+    </div>
+
+</head>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px" id="home">
+
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-display-container w3-center">
+        <!-- general view -->
+        <img src="https://images2.imgbox.com/5b/87/gx6gzGz9_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h2><b>BIENVENIDO AL ENTIERRO MÚLTIPLE DESCUBIERTO EN UXUL</b></h2>
+            <p><b>Uxul Mass Grave Archaeological Project</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- mandible, detail -->
+        <img src="https://images2.imgbox.com/f7/ab/drBaP6SP_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3><b>Investigación</b></h3>
+            <p><b>Vea los resultados de los análisis arqueológicos forenses y los análisis osteológicos</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- skulls -->
+        <img src="https://images2.imgbox.com/9f/48/F3nke7F7_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3><b>Base de datos</b></h3>
+            <p><b>Realice consultas y recuperación avanzada de datos con nuestros recursos</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- mandible set, multiple -->
+        <img src="https://images2.imgbox.com/8c/db/FpUcnMZe_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3><b>Resultados de la investigación</b></h3>
+            <p><b>Consulte las últimas investigaciones sobre el origen de los individulales allí enterrados</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- skeleton -->
+        <img src="https://images2.imgbox.com/21/5e/usJQ0Ljc_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3 style="color:#686868;"><b>Vista detallada de registros</b></h3>
+            <p style="color:#686868;"><b>Examine los detalles de los restos individuales y los elementos
+                    arqueológicos</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- interactive map -->
+        <img src="https://images2.imgbox.com/ee/78/phoRgorv_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3 style="color:#686868;"><b>Mapa interactivo</b></h3>
+            <p style="color:#686868;"><b>Navegue por una reconstrucción virtual de la cueva artificial de Uxul y examine
+                    los restos en su contexto</b></p>
+        </div>
+    </div>
+    <!--CARROUSEL IMAGES END-->
+
+
+    <!-- discover Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="/* max-width: 800px */" id="discover">
+        <h2 class="w3-wide">Bienvenido a la base de datos electrónica del entierro múltiple de Uxul</h2>
+        <p class="w3-opacity">La información presentada en este sitio web contiene todos los datos de investigación
+            recopilados desde el descubrimiento del entierro múltiple de Uxul en abril de 2013. Un punto central es la
+            difusión del material de documentación gráfica y textual de todos los elementos óseos que componen el
+            Entierro Múltiple de Uxul, al que se puede acceder en el panel <a href="#catalog">"catálogo de elementos
+                óseos".<br><br></a> La información sobre el descubrimiento del hallazgo, el proceso de excavación y la
+            infraestructura urbana circundante se puede acceder en la sección <a href="#context">"contexto
+                arqueológico".<br><br></a> Si desea reproducir alguno de los materiales gráficos o citar las
+            descripciones contenidas, consulte los <a href="#terms">"términos de uso",</a> o <a href="#contact">contacte
+                con nosotros </a> directamente. <br><br> Los comentarios y las consultas sobre los datos presentados
+            pueden hacerse en la sección <a href="#contact">"contacto".<br><br></a></p>
+        <div class w3-container w3-content w3-padding-64>
+            <div class="w3-row w3-padding-32">
+                <div class="w3-wide w3-center">
+                    <img src="https://images2.imgbox.com/5b/87/gx6gzGz9_o.jpg" class="w3-round w3-margin-bottom"
+                        alt="NS" style="width:100%">
+                    <p>La cueva artificial de Uxul. Fotografía © 2015 de Nicolaus Seefeld</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRONTEND Section -->
+        <div class="w3-black" id="apps">
+            <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+                <h2 class="w3-wide w3-center">APLICACIONES</h2>
+
+                <ul class="w3-ul w3-border w3-white w3-text-grey" id="directus">
+                    <li class="w3-padding">Ir a Directus &nbsp &nbsp &nbsp <a href="http://directus.uxulmassgrave.com"
+                            class="w3-bar-item w3-button w3-red w3-sectio w3-padding-largel">DIRECTUS</a><span
+                            class="w3-tag w3-red w3-margin-left" IR A APLICACIONES</span></li>
+                    <p class="w3-opacity w3-center"><i>Acceder a Directus, Sistema Avanzado de Administracion de
+                            Contenidos (CMS)</i></p><br>
+                    <ul class="w3-ul w3-border w3-white w3-text-grey" id="drupal">
+                        <li class="w3-padding">Ir a Drupal 9 &nbsp &nbsp &nbsp <a href="http://drupal.uxulmassgrave.com"
+                                class="w3-bar-item w3-button w3-red w3-sectio w3-padding-largel">DRUPAL 9</a><span
+                                class="w3-tag w3-red w3-margin-left" IR A APLICACIONES</span></li>
+                        <p class="w3-opacity w3-center"><i>Acceder a un interfaz de alto rendimiento de Drupal 9</i></p>
+                        <br>
+
+                    </ul>
+
+            </div>
+        </div>
+
+        <!-- DATABASE SECTION -->
+        <div id="ticketModal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4">
+                <header class="w3-container w3-teal w3-center w3-padding-32">
+                    <span onclick="document.getElementById('ticketModal').style.display='none'"
+                        class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+                    <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>SOME TEXT</h2>
+                </header>
+                <div class="w3-container">
+                    <p><label><i class="fa fa-shopping-cart"></i>Some text here</label></p>
+                    <input class="w3-input w3-border" type="text" placeholder="How many?">
+                    <p><label><i class="fa fa-user"></i> Send To</label></p>
+                    <input class="w3-input w3-border" type="text" placeholder="Enter email">
+                    <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">DONATE <i
+                            class="fa fa-check"></i></button>
+                    <button class="w3-button w3-red w3-section"
+                        onclick="document.getElementById('ticketModal').style.display='none'">Close <i
+                            class="fa fa-remove"></i></button>
+                    <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+                </div>
+            </div>
+        </div>
+        <!--cont.-->
+        <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="pgadmin">
+            <h2 class="w3-wide w3-center">BASE DE DATOS</h2>
+            <p class="w3-opacity w3-center"><i>Realice consultas avanzadas y minería de datos</i></p>
+            <p class="w3-justify">Desde 2022, todos los elementos óseos documentados y los artefactos asociados se
+                conservan en un ambicioso proyecto de restauración financiado por el Programa de Patrimonios de la
+                Fundación Gerda Henkel. Con el fin de supervisar y documentar las diferentes etapas de conservación,
+                corroborar el amplio modificaciones culturales de los elementos óseos, y hacerlos visibles, accesibles y
+                y comprensibles tanto para el público en general como para la comunidad científica, este proyecto de
+                restauración también publica los copiosos resultados de la investigación en una base de datos
+                electrónica de libre acceso. El diseño y la funcionalidad de esta base de datos electrónica
+                (https://uxulmassgrave.com/#) permitirán un proceso didáctico de transferencia de conocimientos y
+                garantizar la comprensibilidad y accesibilidad general de este exepcional hallazgo.</p>
+        </div>
+        <ul class="w3-ul w3-border w3-white w3-text-grey">
+            <li class="w3-padding">Acceder a PGAdmin para administrar la base de datos PostgreSQL (sólo miembros) &nbsp
+                &nbsp <a href="http://pgadmin.uxulmassgrave.com"
+                    class="w3-bar-item w3-button w3-red w3-sectio w3-padding-largel">BASE DE DATOS</a><span
+                    class="w3-tag w3-red w3-margin-left" GO TO FRONTEND HERE</span></li>
+        </ul>
+
+        <!-- NEWS Section -->
+
+        <body>
+            <!-- UPCOMING Section -->
+            <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="upcoming">
+                <div class="w3-container w3-content w3-left w3-padding-64" style="max-width:800px">
+                    <h2 class="w3-wide w3-center">CONFERENCIAS Y CALENDARIO DE ACTIVIDADES ACADÉMICAS</h2>
+                    <p class="w3-opacity w3-center"><i>Conozca nuestra actividades recientes y próximas</i></p><br>
+                    <!-- Columns with placeholders begin-->
+                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                        <div class="w3-third w3-margin-bottom">
+                            <img src="https://uxulmassgrave.com/assets/images/conferences/UACAM.jpg" alt="Campeche"
+                                style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>Campeche, Mexico</b></p>
+                                <p class="w3-opacity">Mie. 7 Nov 2022</p>
+                                <p>Encuentro Internacional "Log Investigadores de de la Cultura Maya"</p>
+                                <button class="w3-button w3-black w3-margin-bottom"
+                                    onclick="document.getElementById('ticketModal').style.display='block'">Ver
+                                    Detalles</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom">
+                            <img src="https://uxulmassgrave.com/assets/images/conferences/UNAM.jpg" alt="Paris"
+                                style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>UNAM, México CDMX</b></p>
+                                <p class="w3-opacity">Vie. Fri 7 Oct 2022</p>
+                                <p>Dieta y migración en el pasado: aproximaciones desde la arqueometría <br>Instituto de
+                                    Investigaciones Antropológicas (IIA/UNAM)</p>
+                                <button class="w3-button w3-black w3-margin-bottom"
+                                    onclick="document.getElementById('ticketModal').style.display='block'">Ver
+                                    Detalles</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom margin-left">
+                            <img src="https://uxulmassgrave.com/assets/images/conferences/Seville.jpg"
+                                alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>Seville, Spain</b></p>
+                                <p class="w3-opacity">Vie. 3 Junio 2022</p>
+                                <p>Warfare, Environment, Social Inequality, and Pro-Sociability (WESIPS) 2022 – Biennial
+                                    Conference</p>
+                                <button class="w3-button w3-black w3-margin-bottom"
+                                    onclick="document.getElementById('ticketModal').style.display='block'">Ver
+                                    Detalles</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--added NOW-->
+                    <!--- END of Upcoming events content (cont.)-->
+                    <!-- PUBLICATIONS Section -->
+
+                    <!-- TEAM Section -->
+                    <div class="w3-black w3-content w3-center" style="max-width:800px" id="team">
+                        <p class="w3-opacity"><i><br><br></i></p>
+                        <h2 class="w3-wide" style="{top: 30};">CONOZCA A NUESTRO EQUIPO</h2>
+                        <p class="w3-opacity"><i>The Team from the Uxul Mass Grave Archaeological Project</i></p>
+                        <p class="w3-justify w3-margin-left w3-margin-right"><strong>Dr. Nicolaus Seefeld</strong>,
+                            Director del proyecto<br>
+                            (Departamento de Antropología de las Américas, Universidad de Bonn, Alemania)<br>
+                            Contacto: nicolaus.seefeld(at)gmail.com<br><br>
+                            <strong>Lic. Leticia Jiménez Hernández</strong>, Líder de la sección de restauración<br>
+                            Centro INAH Campeche, Taller de restauración, Instituto Nacional de Antropología e Historia,
+                            San Francisco de Campeche, Campeche, México.<br>
+                            Contacto: leticia_jimenez(at)inah.gob.mx<br><br>
+                            <strong>Dr. des. Carlos Pallán Gayol</strong>, Desarrollo y diseño de bases de datos<br>
+                            (Departamento de Antropología de las Américas, Universidad de Bonn, Alemania)<br>
+                            Contacto: cpallan1(at)uni-bonn.de<br><br>
+                            <strong>Lic. Félix Camacho Zamora</strong>, Restaurador responsable<br>
+                            Centro INAH Campeche, Taller de restauración, Instituto Nacional de Antropología e Historia
+                            San Francisco de Campeche, Campeche, México<br><br>
+                            <strong>Rest. Valentín Hernández Canche</strong>, Técnico de restauración<br>
+                            Centro INAH Campeche, Taller de restauración, Instituto Nacional de Antropología e Historia
+                            San Francisco de Campeche, Campeche, México<br><br>
+                            <strong>Rest. Anabel Cambranis Alfaro</strong>, Técnica de restauración<br>
+                            Centro INAH Campeche, Taller de restauración, Instituto Nacional de Antropología e Historia
+                            San Francisco de Campeche, Campeche, México<br><br>
+                            <strong>Rest. Gaspar Panti Dzul</strong>, Técnico de restauración<br>
+                            Centro INAH Campeche, Taller de restauración, Instituto Nacional de Antropología e Historia
+                            San Francisco de Campeche, Campeche, México<br><br>
+                            <strong>C.P. Yolanda Espinosa Fernández</strong>, Contabilidad del Proyecto<br>
+                            Centro INAH Campeche, Taller de restauración, Instituto Nacional de Antropología e Historia
+                            San Francisco de Campeche, Campeche, México<br>
+                        </p>
+                        <div class="w3-row w3-padding-32">
+                            <div class="w3-third w3-left" id="NPS">
+
+                                <img src="https://uxulmassgrave.com/assets/images/team/NS.jpg"
+                                    class="w3-round w3-margin-bottom" alt="Nicolaus Seefeld" height="200px">
+                                <p>Dr. Nicolaus Paul Seefeld</p>
+                            </div>
+                            <div class="w3-third w3-center margin-left" id="LJH">
+
+                                <img src="https://images2.imgbox.com/3f/61/JWQYj9fM_o.jpg"
+                                    class="w3-round w3-margin-bottom" alt="Leticia Jiménez Hernández" height="200px">
+                                <p>Lic. Leticia Jiménez Hernández</p>
+                            </div>
+                            <div class="w3-third w3-right" id="CPG">
+
+                                <img src="https://images2.imgbox.com/b0/90/9LqaKZFE_o.jpg" class="w3-round"
+                                    alt="Carlos Pallan Gayol" height="200px">
+                                <p>Dr. des. Carlos Pallan Gayol</p>
+                            </div>
+                            <div class="w3-third w3-right" id="FCZ">
+                                <img src="https://uxulmassgrave.com/assets/images/team/FCZ.jpg" class="w3-round"
+                                    alt="https://uxulmassgrave.com/assets/images/team/FCZ.jpg" height="200px">
+                                <p>Rest. Félix Camacho Zamora</p>
+                            </div>
+                            <div class="w3-third w3-right" id="GPD">
+                                <img src="https://uxulmassgrave.com/assets/images/team/GPD.jpg" class="w3-round"
+                                    alt="Carlos Pallan Gayol" height="200px">
+                                <p>Rest. Gaspar Panti Dzul</p>
+                            </div>
+                            <div class="w3-third w3-right" id="ACA">
+                                <img src="https://uxulmassgrave.com/assets/images/team/Anabel.jpg" class="w3-round"
+                                    alt="Carlos Pallan Gayol" height="200px">
+                                <p>Rest. Anabel Cambranis Alfaro</p>
+                            </div>
+                            <div class="w3-third w3-left" id="VHC">
+                                <img src="https://uxulmassgrave.com/assets/images/team/VHC.jpg" class="w3-round"
+                                    alt="Yolanda Espinosa Fernández" height="200px">
+                                <br>
+                                <p>Rest. Yolanda Espinosa Fernández</p>
+                            </div>
+                            <div class="w3-third w3-left" id="YEF">
+                                <img src="https://uxulmassgrave.com/assets/images/team/Yolanda.jpg" class="w3-round"
+                                    alt="Yolanda Espinosa Fernández" height="200px">
+                                <br>
+                                <p>C.P. Yolanda Espinosa Fernández</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--CONTACT 1 Section -->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="features">
+                    <h2 class="w3-wide w3-center">CONTACTO</h2>
+                    <p class="w3-opacity w3-center"><i>Comuníquese con nosotros</i></p>
+                    <div class="w3-row-padding w3-padding-32">
+                        <img src="https://images2.imgbox.com/1c/89/KN1iocGu_o.jpg" class="w3-image w3-greyscale-min"
+                            style="width:100%">
+                        <div class="w3-col w3-center m6 w3-large w3-margin-top w3-margin-bottom">
+                            <i class="fa fa-map-marker" style="width:30px"></i> Uxul Mass Grave project<br>
+                            <i class="w3-padding" style="width:30px"></i> Institute for Archaeology and Cultural
+                            Anthropology<br>
+                            <i class="w3-padding" style="width:30px"></i> Department for the Anthropology of the
+                            Americas<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> University of Bonn<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> Oxfordstrasse 15<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> 53111 Bonn<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> Germany<br>
+                            <i class="fa fa-phone" style="width:30px"></i> Tel. +49 (0) 288 73 44 12<br>
+                            <i class="fa fa-fax" style="width:30px"></i> Fax. +49 (0)228 73 4385<br>
+                            <i class="fa fa-envelope" style="width:30px"> </i> Email: admin@uxulmassgrave.com<br>
+                        </div>
+                        <div class="w3-row w3-center w3-padding-32">
+                            <div class="w3-col m6">
+                                <form action="/action_page.php" target="_blank">
+                                    <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                        <div class="w3-half">
+                                            <input class="w3-input w3-border" type="text" placeholder="Name" required
+                                                name="Name">
+                                        </div>
+                                        <div class="w3-half">
+                                            <input class="w3-input w3-border" type="text" placeholder="Email" required
+                                                name="Email">
+                                        </div>
+                                    </div>
+                                    <input class="w3-input w3-border" type="text" placeholder="Message" required
+                                        name="Message">
+                                    <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Page Content -->
+                </div>
+
+                <!-- Image of location/map -->
+
+                <!-- Footer -->
+                <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+                    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                    <i class="fa fa-instagram w3-hover-opacity"></i>
+                    <i class="fa fa-snapchat w3-hover-opacity"></i>
+                    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                    <i class="fa fa-twitter w3-hover-opacity"></i>
+                    <i class="fa fa-linkedin w3-hover-opacity"></i>
+                    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+                            target="_blank">w3.css</a></p>
+                </footer>
+
+                <script>
+                    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+                    carousel();
+
+                    function carousel() {
+                        var i;
+                        var x = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        myIndex++;
+                        if (myIndex > x.length) { myIndex = 1 }
+                        x[myIndex - 1].style.display = "block";
+                        setTimeout(carousel, 2000); // original value was set at 4000
+                    }
+
+                    // Used to toggle the menu on small screens when clicking on the menu button
+                    function myFunction() {
+                        var x = document.getElementById("navDemo");
+                        if (x.className.indexOf("w3-show") == -1) {
+                            x.className += " w3-show";
+                        } else {
+                            x.className = x.className.replace(" w3-show", "");
+                        }
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    var modal = document.getElementById('ticketModal');
+                    window.onclick = function (event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+
+        </body>
+
+</html>

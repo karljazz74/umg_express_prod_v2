@@ -1,0 +1,382 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="index" appConnect="local" -->
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="cdn" is="dmx-app" id="index" appConnect="local" -->
+<!DOCTYPE html>
+<html lang="en">
+<title>UxulMassGrave</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+    <app.use(express.static('assets'))>
+</script>
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    w3-col clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+
+        .w3-justify {
+            margin: 10;
+            padding-left: 10
+        }
+    }
+</style>
+
+<head>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+            <a href="#home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+            <a href="#discover" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DISCOVER</a>
+            <a href="#drupal" class="w3-bar-item w3-button w3-padding-large w3-hide-small">FRONTEND</a>
+            <a href="#pgadmin" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DATABASE</a>
+            <!-- CPG Added Single Record and Multirecord views dropdown -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="More">RECORDS<i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="/records_multi" class="w3-bar-item w3-button">Records List View</a>
+                    <a href="/records_detail" class="w3-bar-item w3-button">Records Detail View</a>
+                    <a href="/dental" class="w3-bar-item w3-button">Dental Records View</a>
+                </div>
+            </div>
+
+            <!-- Btn w/dropdown begins -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="More">TEAM <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#team" class="w3-bar-item w3-button">Nicolaus Seeleld</a>
+                    <a href="#team" class="w3-bar-item w3-button">Leticia Jiménez Hernández</a>
+                    <a href="#team" class="w3-bar-item w3-button">Carlos Pallan Gayol</a>
+                </div>
+            </div>
+            <!-- Btn w/dropdown ends -->
+            <!-- Btn w/dropdown begins -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-padding-large w3-button" title="features">FEATURES <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#catalog" class="w3-bar-item w3-button">Catalog of Bone Elements</a>
+                    <a href="#single_rec" class="w3-bar-item w3-button">Single Record View</a>
+                    <a href="#map" class="w3-bar-item w3-button">Interactive Map</a>
+                    <a href="#3d_models" class="w3-bar-item w3-button">Selected 3D Models</a>
+                </div>
+            </div>
+            <!-- Btn w/dropdown ends -->
+            <a href="#news" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NEWS</a>
+            <a href="#upcoming" class="w3-bar-item w3-button w3-padding-large w3-hide-small">UPCOMING</a>
+            <a href="#publications" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PUBLICATIONS</a>
+
+            <!--- CPG: Search button top top right corner -->
+            <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+
+    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+        <a href="#discover" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">discover</a>
+        <a href="#drupal" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">FRONTEND</a>
+        <a href="#pgadmin" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">DATABASE</a>
+        <a href="#catalog" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Catalog</a>
+        <a href="#single_rec" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Single Record View</a>
+        <a href="#map" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Interactive Map</a>
+    </div>
+
+</head>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px" id="home">
+
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-display-container w3-center">
+        <!-- general view -->
+        <img src="https://images2.imgbox.com/5b/87/gx6gzGz9_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h2><b>WELCOME TO UXUL MASS GRAVE</b></h2>
+            <p><b>Uxul Mass Grave Archaeological Project</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- mandible, detail -->
+        <img src="https://images2.imgbox.com/f7/ab/drBaP6SP_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3><b>Research</b></h3>
+            <p><b>View results from forensic archaological analyses [&] osteological analyses</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- skulls -->
+        <img src="https://images2.imgbox.com/9f/48/F3nke7F7_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3><b>Database</b></h3>
+            <p><b>Perform queries and advanced data retrieval with our resources</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- mandible set, multiple -->
+        <img src="https://images2.imgbox.com/8c/db/FpUcnMZe_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3><b>Research Results</b></h3>
+            <p><b>See the latest research about the origin of the individulals therein buried</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- skeleton -->
+        <img src="https://images2.imgbox.com/21/5e/usJQ0Ljc_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3 style="color:#686868;"><b>Detailed Record View</b></h3>
+            <p style="color:#686868;"><b>Examine the details of individual remains [&] archaeological items</b></p>
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <!-- interactive map -->
+        <img src="https://images2.imgbox.com/ee/78/phoRgorv_o.jpg" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3 style="color:#686868;"><b>Interactive Map</b></h3>
+            <p style="color:#686868;"><b>Navigate a virtual reconstruction of Uxul's artificial cave and examine the remains in context</b></p>
+        </div>
+    </div>
+    <!--CARROUSEL IMAGES END-->
+
+
+    <!-- discover Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="/* max-width: 800px */" id="discover">
+        <h2 class="w3-wide">Welcome to the electronic database of the Uxul Mass Grave</h2>
+        <p class="w3-opacity"><i>The discovery of the Artificial Cave at Uxul</i></p>
+        <p class="w3-justify">The information presented in this website contains all the research data compiled since the
+            discovery of the Uxul Mass Grave in April 2013. A central focus is the dissemination of the
+            graphic and textual documentation material of all the bone elements comprising the Uxul Mass
+            Grave, which can be accessed in the panel <a href="#catalog">“catalog of bone elements”.<br><br></a>
+            Information on the discovery of the finding, the excavation process and the surrounding urban infrastructure can be
+            accessed in the section <a href="#context">“archaeological context”.<br><br></a>
+            If you want to reproduce any of the graphic materials or cite the contained descriptions, please refer to the <a href="#terms">“terms of use”,</a> or <a href="#contact"> contact us </a> directly. <br><br>
+            Comments and inquiries on the presented data can be placed in the <a href="#contact">“contact” section.<br><br></a></p>
+        <div class w3-container w3-content w3-padding-64>
+            <div class="w3-row w3-padding-32">
+                <div class="w3-wide w3-center">
+                    <img src="https://images2.imgbox.com/5b/87/gx6gzGz9_o.jpg" class="w3-round w3-margin-bottom" alt="NS" style="width:100%">
+                    <p>The Artificial Cave at Uxul. Photograph © 2015 by Nicolaus Seefeld</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRONTEND Section -->
+        <div class="w3-black" id="drupal">
+            <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+                <h2 class="w3-wide w3-center">FRONTEND</h2>
+                <p class="w3-opacity w3-center"><i>Access a high-performance Drupal 9 interface</i></p><br>
+
+                <ul class="w3-ul w3-border w3-white w3-text-grey">
+                    <li class="w3-padding">Go to Drupal 9 &nbsp &nbsp &nbsp <a href="http://drupal.uxulmassgrave.com" class="w3-bar-item w3-button w3-red w3-sectio w3-padding-largel">FRONTEND</a><span class="w3-tag w3-red w3-margin-left" GO TO FRONTEND HERE</span></li>
+                    <li class="w3-padding">September <span class="w3-tag w3-red w3-margin-left">Some content</span></li>
+                    <li class="w3-padding">October <span class="w3-tag w3-red w3-margin-left">Some content</span></li>
+                    <li class="w3-padding">November <span class="w3-badge w3-right w3-margin-right">3</span></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- DATABASE SECTION -->
+        <div id="ticketModal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4">
+                <header class="w3-container w3-teal w3-center w3-padding-32">
+                    <span onclick="document.getElementById('ticketModal').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+                    <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>SOME TEXT</h2>
+                </header>
+                <div class="w3-container">
+                    <p><label><i class="fa fa-shopping-cart"></i>Some text here</label></p>
+                    <input class="w3-input w3-border" type="text" placeholder="How many?">
+                    <p><label><i class="fa fa-user"></i> Send To</label></p>
+                    <input class="w3-input w3-border" type="text" placeholder="Enter email">
+                    <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">DONATE <i class="fa fa-check"></i></button>
+                    <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+                    <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+                </div>
+            </div>
+        </div>
+        <!--cont.-->
+        <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="pgadmin">
+            <h2 class="w3-wide w3-center">DATABASE</h2>
+            <p class="w3-opacity w3-center"><i>Perform Advanced Queries [&] Data Retrieval</i></p>
+            <p class="w3-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <ul class="w3-ul w3-border w3-white w3-text-grey">
+            <li class="w3-padding">Access the PGAdmin [&] the PostgreSQL database &nbsp &nbsp <a href="http://pgadmin.uxulmassgrave.com" class="w3-bar-item w3-button w3-red w3-sectio w3-padding-largel">DATABASE</a><span class="w3-tag w3-red w3-margin-left" GO TO FRONTEND HERE</span></li>
+        </ul>
+
+        <!-- NEWS Section -->
+
+        <body>
+            <!-- UPCOMING Section -->
+            <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="upcoming">
+                <div class="w3-container w3-content w3-left w3-padding-64" style="max-width:800px">
+                    <h2 class="w3-wide w3-center">UPCOMING CONFERENCES [&] RESEARCH CALENDAR</h2>
+                    <p class="w3-opacity w3-center"><i>Access a high-performance Drupal 9 interface</i></p><br>
+                    <!-- Columns with placeholders begin-->
+                    <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                        <div class="w3-third w3-margin-bottom">
+                            <img src="https://via.placeholder.com/150/0000FF/FFFFFF/?text=Digital.com" alt="Campeche" style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>Campeche, Mexico</b></p>
+                                <p class="w3-opacity">Thu 3 Nov 2022</p>
+                                <p>Encuentro Internacional "Log Investigadores de de la Cultura Maya"</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">View Details</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom">
+                            <img src="https://via.placeholder.com/150/FF0000/808080/?text=Down.com" alt="Paris" style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>Cologne, Germany</b></p>
+                                <p class="w3-opacity">Fri 25 Nov 2022</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">View Details</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom margin-left">
+                            <img src="https://via.placeholder.com/150/FFFF00/000000/?text=WebsiteBuilders.com" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>Cracow, Poland</b></p>
+                                <p class="w3-opacity">Thu 1 Dec 2022</p>
+                                <p>EMC European Maya Conference</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">View Details</button>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-margin-bottom">
+                            <img src="https://via.placeholder.com/150/453a3a2c/000000/?text=WebsiteBuilders.com" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+                            <div class="w3-container w3-white">
+                                <p><b>Campeche, Mexico</b></p>
+                                <p class="w3-opacity">May 2023</p>
+                                <p>Osteological analyses [&] 3D scanning documentation of bone remains</p>
+                                <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--added NOW-->
+                    <!--- END of Upcoming events content (cont.)-->
+                    <!-- PUBLICATIONS Section -->
+
+                    <!-- TEAM Section -->
+                    <div class="w3-black w3-content w3-center" style="max-width:800px" id="team">
+                        <h2 class="w3-wide" style="{top: 30};">MEET OUR TEAM</h2>
+                        <p class="w3-opacity"><i>The Team from the Uxul Mass Grave Archaeological Project</i></p>
+                        <p class="w3-justify w3-margin-left w3-margin-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
+                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="w3-row w3-padding-32">
+                            <div class="w3-third w3-left">
+                                <p>Nicolaus Seefeld</p>
+                                <img src="https://thumbs2.imgbox.com/af/54/4mSME3G2_b.png" class="w3-round w3-margin-bottom" alt="Nicolaus Seefeld" height="200px">
+                            </div>
+                            <div class="w3-third w3-center margin-left">
+                                <p>Leticia Jiménez Hernández</p>
+                                <img src="https://images2.imgbox.com/3f/61/JWQYj9fM_o.jpg" class="w3-round w3-margin-bottom" alt="Leticia Jiménez Hernández" height="200px">
+                            </div>
+                            <div class="w3-third w3-right">
+                                <p>Carlos Pallan Gayol</p>
+                                <img src="https://images2.imgbox.com/b0/90/9LqaKZFE_o.jpg" class="w3-round" alt="Carlos Pallan Gayol" height="200px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--CONTACT 1 Section -->
+                <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="features">
+                    <h2 class="w3-wide w3-center">CONTACT</h2>
+                    <p class="w3-opacity w3-center"><i>Get in touch with us</i></p>
+                    <div class="w3-row-padding w3-padding-32" align="center">
+                        <img src="https://images2.imgbox.com/1c/89/KN1iocGu_o.jpg" class="w3-image w3-greyscale-min" style="width:100%">
+                        <div class="w3-col w3-center m6 w3-large w3-margin-top w3-margin-bottom">
+                            <i class="fa fa-map-marker" style="width:30px"></i> Uxul Mass Grave project<br>
+                            <i class="w3-padding" style="width:30px"></i> Institute for Archaeology and Cultural Anthropology<br>
+                            <i class="w3-padding" style="width:30px"></i> Department for the Anthropology of the Americas<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> University of Bonn<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> Oxfordstrasse 15<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> 53111 Bonn<br>
+                            <i class="fa fa-map-marker" style="width:30px"></i> Germany<br>
+                            <i class="fa fa-phone" style="width:30px"></i> Tel. +49 (0) 288 73 44 12<br>
+                            <i class="fa fa-fax" style="width:30px"></i> Fax. +49 (0)228 73 4385<br>
+                            <i class="fa fa-envelope" style="width:30px"> </i> Email: admin@uxulmassgrave.com<br>
+                        </div>
+                        <div class="w3-row w3-center w3-padding-32">
+                            <div class="w3-col m6">
+                                <form action="/action_page.php" target="_blank">
+                                    <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                        <div class="w3-half">
+                                            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                                        </div>
+                                        <div class="w3-half">
+                                            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                                        </div>
+                                    </div>
+                                    <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                                    <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Page Content -->
+                </div>
+
+                <!-- Image of location/map -->
+
+                <!-- Footer -->
+                <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+                    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                    <i class="fa fa-instagram w3-hover-opacity"></i>
+                    <i class="fa fa-snapchat w3-hover-opacity"></i>
+                    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                    <i class="fa fa-twitter w3-hover-opacity"></i>
+                    <i class="fa fa-linkedin w3-hover-opacity"></i>
+                    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                </footer>
+
+                <script>
+                    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // original value was set at 4000
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+                </script>
+
+        </body>
+
+</html>

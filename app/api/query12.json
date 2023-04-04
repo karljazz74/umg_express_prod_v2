@@ -1,0 +1,57 @@
+{
+  "name": "query_bild2",
+  "module": "dbupdater",
+  "action": "custom",
+  "options": {
+    "connection": "db_remote",
+    "sql": {
+      "query": "SELECT id_images, filepath, CONCAT(filepath, filename) as thumb, image_number, set_timestamp, figure_caption, fk_records, filename, pdf_page FROM db_schema.images ORDER BY id_images ASC ",
+      "params": [
+        {
+          "name": "",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "output": true,
+  "meta": [
+    {
+      "type": "number",
+      "name": "id_images"
+    },
+    {
+      "type": "text",
+      "name": "filepath"
+    },
+    {
+      "type": "thumb",
+      "name": "image_number"
+    },
+    {
+      "type": "text",
+      "name": "image_number"
+    },
+    {
+      "type": "datetime",
+      "name": "set_timestamp"
+    },
+    {
+      "type": "string",
+      "name": "figure_caption"
+    },
+    {
+      "type": "number",
+      "name": "fk_records"
+    },
+   {
+      "type": "text",
+      "name": "filename"
+    },
+    {
+      "type": "number",
+      "name": "pdf_page"
+    }
+  ],
+  "outputType": "array"
+ }

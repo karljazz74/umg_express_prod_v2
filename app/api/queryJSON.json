@@ -1,0 +1,37 @@
+{
+  "name": "custom1",
+  "module": "dbupdater",
+  "action": "custom",
+  "options": {
+    "connection": "db_local",
+    "sql": {
+      "query": "SELECT id_record, obj_designation, name AS obj_name, value AS obj_value\nFROM db_schema.records t,JSON_TO_RECORDSET(t.obj_name)\nAS items1(language text, name text, value text)\nWHERE items1.language = 'EN'",
+      "params": [
+        {
+          "name": ":P1",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "meta": [
+    {
+      "name": "id_record",
+      "type": "text"
+    },
+    {
+      "name": "obj_designation",
+      "type": "text"
+    },
+    {
+      "name": "obj_name",
+      "type": "text"
+    },
+    {
+      "name": "obj_value",
+      "type": "text"
+    }
+  ],
+  "outputType": "array",
+  "output": true
+}

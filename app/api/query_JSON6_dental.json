@@ -1,0 +1,55 @@
+{
+  "name": "custom_dent",
+  "module": "dbupdater",
+  "action": "custom",
+  "options": {
+    "connection": "db_remote",
+    "sql": {
+      "query": "select number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.upper_right) as items(number integer, language text, abbr text, name text, value text) where items.language = 'ES'
+UNION
+select number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.upper_left) as items(number integer, language text, abbr text, name text, value text) where items.language = 'ES'
+select number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.lower_left) as items(number integer, language text, abbr text, name text, value text) WHERE id_dental = 'ES'
+UNION
+UNION
+select number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.lower_right) as items(number integer, language text, abbr text, name text, value text) where items.language = 'ES';",
+      "params": [
+        {
+          "name": ":P1",
+          "value":
+        }
+      ]
+    }
+  },
+  "output": true,
+  "meta": [
+    {
+      "name": "id_dentak",
+      "type": "text"
+    },
+    {
+      "name": "table_head",
+      "type": "text"
+    },
+    {
+      "name": "fk_records",
+      "type": "text"
+    },
+    {
+      "name": "upper_right",
+      "type": "text"
+    },
+    {
+      "name": "upper_left",
+      "type": "text"
+    },
+    {
+      "name": "lower_left",
+      "type": "text"
+    },
+    {
+      "name": "language_status",
+      "type": "text"
+    }
+  ],
+  "outputType": "array"
+}

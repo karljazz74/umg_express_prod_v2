@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db_local",
+        "sql": {
+          "type": "SELECT",
+          "columns": [
+            {
+              "table": "db_schema.dental_records",
+              "column": "id_dental"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "table_head"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "fk_records"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "upper_right"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "upper_left"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "lower_left"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "lower_right"
+            },
+            {
+              "table": "db_schema.dental_records",
+              "column": "language_status"
+            }
+          ],
+          "table": {
+            "name": "db_schema.dental_records"
+          },
+          "primary": "id_dental",
+          "joins": [],
+          "wheres": {
+            "condition": "AND",
+            "rules": [
+              {
+                "id": "db_schema.dental_records.id_dental",
+                "field": "db_schema.dental_records.id_dental",
+                "type": "double",
+                "operator": "equal",
+                "value": "{{'\\'EN\\''}}",
+                "data": {
+                  "table": "db_schema.dental_records",
+                  "column": "id_dental",
+                  "type": "number",
+                  "columnObj": {
+                    "type": "increments",
+                    "primary": true,
+                    "unique": true,
+                    "nullable": false,
+                    "name": "id_dental"
+                  }
+                },
+                "operation": "="
+              }
+            ],
+            "conditional": null,
+            "valid": true
+          },
+          "query": "SELECT id_dental, table_head, fk_records, upper_right, upper_left, lower_left, lower_right, language_status\nFROM \"db_schema.dental_records\"\nWHERE id_dental = :P1 /* {{'\\'EN\\''}} */",
+          "params": [
+            {
+              "operator": "equal",
+              "type": "expression",
+              "name": ":P1",
+              "value": "{{'\\'EN\\''}}"
+            }
+          ]
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "number",
+          "name": "id_dental"
+        },
+        {
+          "type": "object",
+          "name": "table_head"
+        },
+        {
+          "type": "number",
+          "name": "fk_records"
+        },
+        {
+          "type": "object",
+          "name": "upper_right"
+        },
+        {
+          "type": "object",
+          "name": "upper_left"
+        },
+        {
+          "type": "object",
+          "name": "lower_left"
+        },
+        {
+          "type": "object",
+          "name": "lower_right"
+        },
+        {
+          "type": "number",
+          "name": "language_status"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

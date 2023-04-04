@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="ac:route" content="/img_viewer">
+    <base href="/">
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Image List View</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+    <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer></script>
+    <link rel="stylesheet" href="/dmxAppConnect/dmxBootstrap5TableGenerator/dmxBootstrap5TableGenerator.css" />
+</head>
+
+<body is="dmx-app" id="images2">
+    <dmx-serverconnect id="sc_Bilder" url="/api/query12"></dmx-serverconnect>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Table: Images List View</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <include file="partials/formatter.js"></include>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                            <tr>
+                                <th class="w-5">ID</th>
+                                <th>Filename</th>
+                                <th class="w-5">Image number</th>
+                                <th class="w-5">Filepath</th>
+                                <th class="w-5">thumb</th>
+                                <th class="w-10">Figure</th>
+                                <th class="w-25">Caption</th>
+                                <th class="w-5">Fk records</th>
+                                <th>Filepath</th>
+                                <th class="w-5">Pdf page</th>
+                                <th class="w-5">Timestamp</th>
+                            </tr>
+                        </thead>
+                    <thead>
+                     <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="sc_Bilder.data.query_bild2" id="tableRepeat1">
+                            <tr>
+                                <td dmx-text="id_images"></td>
+                                <td dmx-text="filename"></td>
+                                <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="image_number"></td>
+                                <td dmx-text="thumb"></td>
+                                <td><a><img width="80" dmx-bind:src="sc_Bilder.data.query_bild2[$index].thumb"></a></td>
+                                <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px; font-weight: bold;" dmx-text="figure_caption[0].name"></td>
+                                <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="figure_caption[0].value"></td>
+                                <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="fk_records"></td>
+                                <td dmx-text="filepath"></td>
+                                <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="pdf_page"></td>
+                                <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="set_timestamp"></td>
+                            </tr>
+                      </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+    </div>
+    <main>
+        <div is="dmx-view" id="content">
+            <%- await include(content, locals); %>
+        </div>
+    </main>
+
+    <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

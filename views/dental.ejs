@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Records View</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+    <app.use(express.static('assets'))>
+</script>
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    w3-col clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+
+        .w3-justify {
+            margin: 10;
+            padding-left: 10
+        }
+    }
+</style>
+
+ <head>
+
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="/#home" class="w3-bar-item w3-button w3-padding-large">INICIO</a>
+                <a href="/#discover" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HALLAZGO</a>
+                <a href="/#drupal" class="w3-bar-item w3-button w3-padding-large w3-hide-small">APPS</a>
+                <a href="/#pgadmin" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BASE DE DATOS</a>
+                <!-- CPG Added Single Record and Multirecord views dropdown -->
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="More">REGISTROS<i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/records_multi" class="w3-bar-item w3-button">Registros, Listado</a>
+                        <a href="/records_detail" class="w3-bar-item w3-button">Registros, Detalles</a>
+                        <a href="/dental" class="w3-bar-item w3-button">Registros Dentales</a>
+                        <a href="/img_viewer" class="w3-bar-item w3-button">Listado Imágenes</a>
+                    </div>
+                </div>
+
+                <!-- Btn w/dropdown begins -->
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="More">EQUIPO <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/#team" class="w3-bar-item w3-button">Dr. Nicolaus Seeleld</a>
+                        <a href="/#team" class="w3-bar-item w3-button">Lic. Leticia Jiménez Hernández</a>
+                        <a href="/#team" class="w3-bar-item w3-button">Dr. des.Carlos Pallan Gayol</a>
+                        <a href="/#team" class="w3-bar-item w3-button">Lic. Félix Camacho Zamora</a>
+                        <a href="/#team" class="w3-bar-item w3-button">Rest. Gaspar Panti Dzul</a>
+                        <a href="/#team" class="w3-bar-item w3-button">Rest. Anabel Cambranis Alfaro</a>
+                        <a href="/#team" class="w3-bar-item w3-button">Rest. Valentín Hernández Canche</a>
+                         <a href="#team" class="w3-bar-item w3-button">Lic. Yolanda Espinosa Fernández</a>
+                    </div>
+                </div>
+                <!-- Btn w/dropdown ends -->
+                <!-- Btn w/dropdown begins -->
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="features">CARACTERÍSTICAS <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/#catalog" class="w3-bar-item w3-button">Catálogo Elementos óseos</a>
+                        <a href="/#single_rec" class="w3-bar-item w3-button">Registros vista de detalles</a>
+                        <a href="/#map" class="w3-bar-item w3-button">Mapa Interactivo</a>
+                        <a href="/#3d_models" class="w3-bar-item w3-button">Modelos 3D selectos</a>
+                    </div>
+                </div>
+                <!-- Btn w/dropdown ends -->
+                <a href="/#upcoming" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONFERENCIAS</a>
+                <a href="/#news" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NOTICIAS</a>
+                <a href="/#publications" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PUBLICACIONES</a>
+
+                <!--- CPG: Search button top top right corner -->
+                <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+            <a href="/#discover" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Hallazgo</a>
+            <a href="/#drupal" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Aplicaciones</a>
+            <a href="/#pgadmin" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Base de Datos</a>
+            <a href="/#catalog" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Catálogo</a>
+            <a href="/#single_rec" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Registros, Vista de Detalles</a>
+            <a href="/#map" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Mapa Interactivo</a>
+        </div>
+
+    </head>
+
+
+</head>
+    <!-- Wappler include head-page="layouts/dental_records" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="dental" appConnect="local" -->
+    <meta name="ac:route" content="/dental">

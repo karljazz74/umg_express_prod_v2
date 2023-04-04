@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db_local",
+        "sql": {
+          "type": "SELECT",
+          "columns": [
+            {
+              "table": "db_schema.records",
+              "column": "*"
+            }
+          ],
+          "table": {
+            "name": "db_schema.records"
+          },
+          "primary": "id_record",
+          "joins": [],
+          "query": "SELECT \"id_record\", \"obj_designation\", \"name\" AS \"obj_name\", \"value\" AS \"obj_value\"\nFROM \"db_schema.records t\",JSON_TO_RECORDSET(\"t.obj_name\"\nAS \"items1(language text, name text, value text)\"\nWHERE \"items1.language\" = 'EN'",
+          "params": [],
+          "wheres": {
+            "condition": "AND",
+            "rules": [
+              {
+                "id": "db_schema.records.obj_name",
+                "field": "db_schema.records.obj_name",
+                "type": "string",
+                "operator": "equal",
+                "value": "EN",
+                "data": {
+                  "table": "db_schema.records",
+                  "column": "obj_name",
+                  "type": "json",
+                  "columnObj": {
+                    "type": "json",
+                    "primary": false,
+                    "unique": false,
+                    "nullable": true,
+                    "name": "obj_name"
+                  }
+                },
+                "operation": "="
+              },
+              {
+                "id": "db_schema.records.lote_number",
+                "field": "db_schema.records.lote_number",
+                "type": "double",
+                "operator": "equal",
+                "value": 1332,
+                "data": {
+                  "table": "db_schema.records",
+                  "column": "lote_number",
+                  "type": "number",
+                  "columnObj": {
+                    "type": "bigInteger",
+                    "primary": false,
+                    "unique": false,
+                    "nullable": true,
+                    "name": "lote_number"
+                  }
+                },
+                "operation": "="
+              }
+            ],
+            "conditional": null,
+            "valid": true
+          }
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "text",
+          "name": "id_record"
+        },
+        {
+          "type": "number",
+          "name": "fk_category"
+        },
+        {
+          "type": "text",
+          "name": "obj_designation"
+        },
+        {
+          "type": "object",
+          "name": "obj_name"
+        },
+        {
+          "type": "text",
+          "name": "obj_status"
+        },
+        {
+          "type": "number",
+          "name": "lote_number"
+        },
+        {
+          "type": "text",
+          "name": "find_location"
+        },
+        {
+          "type": "text",
+          "name": "date_documented"
+        },
+        {
+          "type": "text",
+          "name": "previous_id"
+        },
+        {
+          "type": "object",
+          "name": "description"
+        },
+        {
+          "type": "datetime",
+          "name": "set_timestamp"
+        },
+        {
+          "type": "object",
+          "name": "informe_designation"
+        },
+        {
+          "type": "number",
+          "name": "fk_comments"
+        },
+        {
+          "type": "number",
+          "name": "fk_images"
+        },
+        {
+          "type": "text",
+          "name": "language_status"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

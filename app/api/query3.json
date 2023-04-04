@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db_local",
+        "sql": {
+          "type": "SELECT",
+          "columns": [
+            {
+              "table": "db_schema.records",
+              "column": "id_record"
+            },
+            {
+              "table": "db_schema.records",
+              "column": "obj_designation"
+            },
+            {
+              "table": "db_schema.records",
+              "column": "obj_name"
+            },
+            {
+              "table": "db_schema.records",
+              "column": "obj_status"
+            },
+            {
+              "table": "db_schema.records",
+              "column": "lote_number"
+            },
+            {
+              "table": "db_schema.records",
+              "column": "find_location"
+            }
+          ],
+          "table": {
+            "name": "db_schema.records"
+          },
+          "primary": "id_record",
+          "joins": [],
+          "wheres": {
+            "condition": "AND",
+            "rules": [
+              {
+                "id": "db_schema.records.obj_name",
+                "field": "db_schema.records.obj_name",
+                "type": "string",
+                "operator": "equal",
+                "value": "bone",
+                "data": {
+                  "table": "db_schema.records",
+                  "column": "obj_name",
+                  "type": "json",
+                  "columnObj": {
+                    "type": "json",
+                    "primary": false,
+                    "unique": false,
+                    "nullable": true,
+                    "name": "obj_name"
+                  }
+                },
+                "operation": "="
+              }
+            ],
+            "conditional": null,
+            "valid": true
+          },
+          "query": "SELECT id_record, obj_designation, name AS obj_name, value AS obj_value\nFROM \"db_schema.records t\",JSON_TO_RECORDSET(t.obj_name)\nAS items1(language text, name text, value text)\nWHERE items1.language = 'EN'",
+          "params": []
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "text",
+          "name": "id_record"
+        },
+        {
+          "type": "text",
+          "name": "obj_designation"
+        },
+        {
+          "type": "object",
+          "name": "obj_name"
+        },
+        {
+          "type": "text",
+          "name": "obj_status"
+        },
+        {
+          "type": "number",
+          "name": "lote_number"
+        },
+        {
+          "type": "text",
+          "name": "find_location"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

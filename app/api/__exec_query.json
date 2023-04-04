@@ -1,0 +1,33 @@
+{
+  "exec": {
+    "steps": [
+      "connections/db_remote",
+      {
+        "name": "_query",
+        "module": "dbupdater",
+        "action": "custom",
+        "output": true,
+        "options": {
+          "connection": "db_remote",
+          "sql": {
+            "query": "select number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.upper_right) as items(number integer, language text, abbr text, name text, value text) where items.language = 'ES'\nUNION\nselect number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.upper_left) as items(number integer, language text, abbr text, name text, value text) where items.language = 'ES'\nselect number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.lower_left) as items(number integer, language text, abbr text, name text, value text) WHERE id_dental = 'ES'\nUNION\nUNION\nselect number, language, abbr, name, value from db_schema.dental_records,json_to_recordset(dental_records.lower_right) as items(number integer, language text, abbr text, name text, value text) where items.language = 'ES';",
+            "params": [
+              {
+                "name": ":P1"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "catch": {
+      "name": "_error",
+      "module": "core",
+      "action": "setvalue",
+      "output": true,
+      "options": {
+        "value": "{{$_ERROR}}"
+      }
+    }
+  }
+}

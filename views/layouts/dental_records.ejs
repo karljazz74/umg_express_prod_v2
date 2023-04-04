@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="ac:route" content="/records1">
+    <base href="/">
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Records List View</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+    <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer></script>
+    <link rel="stylesheet" href="/dmxAppConnect/dmxBootstrap5TableGenerator/dmxBootstrap5TableGenerator.css" />
+</head>
+
+<body is="dmx-app" id="main">
+    <dmx-serverconnect id="query_dental" url="/api/query_JSON6_copy2"></dmx-serverconnect>
+    
+
+   <header class="bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Table: Dentak Records</h3>
+            </div>
+        </div>
+    </div>
+
+    <include file="partials/formatter.js"></include>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+              <!-- segment block for TABLE 1 -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID dental</th>
+                            <th>FK reg.</th>
+                            <th class="w-5">sup. izq. num.</th>
+                            <th class="w-5">sup. izq. abrev.</th>
+                            <th class="w-5">sup. izq. nombre</th>
+                            <th class="w-5">sup. izq. valor</th>
+                            <th class="w-5">sup. der. num.</th>
+                            <th class="w-5">sup. der. abrev.</th>
+                            <th class="w-5">sup. der. nombre</th>
+                            <th class="w-5">sup. der. valor</th>
+                        </tr>
+                    </thead>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat2">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[0].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[0].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[0].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[0].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[0].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[0].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[0].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[0].value"></td>
+                         </tr>
+                    </tbody>
+                 <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat3">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[3].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[3].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[3].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[3].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[3].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[3].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[3].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[3].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat4">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[6].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[6].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[6].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[6].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[6].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[6].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[6].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[6].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat5">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[9].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[9].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[9].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[9].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[9].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[9].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[9].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[9].value"></td>
+                        </tr>
+                    </tbody>
+                  <!-- segment block for repeats  -->
+                   <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat6">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[12].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[12].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[12].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[12].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[12].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[12].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[12].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[12].value"></td>
+                         </tr>
+                    </tbody>
+                 <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat7">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[15].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[15].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[15].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[15].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[15].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[15].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[15].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[15].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat8">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[18].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[18].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[18].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[18].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[18].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[18].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[18].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[18].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat9">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[21].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[21].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[21].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_left[21].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[21].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[21].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[21].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="upper_right[21].value"></td>
+                        </tr>
+                    </tbody>
+
+              <!-- TABLE 1 ENDS -->
+              <!-- TABLE 2 BEGINS -->
+
+                    <thead>
+                        <tr>
+                            <th>ID dental</th>
+                            <th>FK reg.</th>
+                            <th class="w-5">inf. izq. num.</th>
+                            <th class="w-5">inf. izq. abrev.</th>
+                            <th class="w-5">inf. izq. nombre</th>
+                            <th class="w-5">inf. izq. valor</th>
+                            <th class="w-5">inf. der. num.</th>
+                            <th class="w-5">inf. der. abrev.</th>
+                            <th class="w-5">inf. der. nombre</th>
+                            <th class="w-5">inf. der. valor</th>
+                        </tr>
+                    </thead>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat10">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[0].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[0].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[0].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[0].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[0].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[0].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[0].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[0].value"></td>
+                         </tr>
+                    </tbody>
+                 <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat11">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[3].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[3].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[3].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[3].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[3].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[3].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[3].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[3].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat12">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[6].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[6].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[6].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[6].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[6].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[6].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[6].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[6].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat13">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[9].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[9].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[9].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[9].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[9].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[9].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[9].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[9].value"></td>
+                        </tr>
+                    </tbody>
+                  <!-- segment block for repeats  -->
+                   <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat14">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[12].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[12].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[12].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[12].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[12].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[12].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[12].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[12].value"></td>
+                         </tr>
+                    </tbody>
+                 <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat15">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[15].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[15].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[15].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[15].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[15].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[15].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[15].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[15].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat6">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[18].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[18].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[18].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[18].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[18].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[18].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[18].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[18].value"></td>
+                        </tr>
+                    </tbody>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_dental.data.custom_dent" id="tableRepeat17">
+                        <tr>
+                            <td dmx-text="id_dental"></td>
+                            <td dmx-text="fk_records"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[21].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[21].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[21].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_left[21].value"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[21].number"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[21].abbr"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[21].name"></td>
+                            <td xt-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="lower_right[21].value"></td>
+                        </tr>
+                    </tbody>
+                </table>
+              <!-- TABLE 2 ENDS -->
+             </div>
+          </row>
+       </div>
+    </div>
+    <main>
+        <div is="dmx-view" id="content">
+            <%- await include(content, locals); %>
+        </div>
+    </main>
+
+    <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

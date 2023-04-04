@@ -1,0 +1,65 @@
+{
+  "name": "custom",
+  "module": "dbupdater",
+  "action": "custom",
+  "options": {
+    "connection": "db_remote",
+    "sql": {
+      "query": "SELECT records.id_record, records.obj_status, records.obj_designation, records.obj_name -> 0 ->>'value' AS obj_name, records.lote_number, records.find_location, records.date_documented, records.description -> 0 ->>'value' AS obj_description, records.set_timestamp, records.informe_designation -> 0 ->> 'value' AS informe_designation FROM db_schema.records ORDER BY id_record ASC",
+      "params": [
+        {
+          "name": ":P1",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "output": true,
+  "meta": [
+    {
+      "name": "id_record",
+      "type": "number"
+    },
+    {
+      "name": "obj_status",
+      "type": "text"
+    },
+    {
+      "name": "obj_designation",
+      "type": "text"
+    },
+    {
+      "name": "obj_name",
+      "type": "text"
+    },
+    {
+      "name": "obj_label",
+      "type": "text"
+    },
+    {
+      "name": "lote_number",
+      "type": "text"
+    },
+    {
+      "name": "find_location",
+      "type": "text"
+    },
+    {
+      "name": "date_documented",
+      "type": "text"
+    },
+    {
+      "name": "obj_description",
+      "type": "text"
+    },
+    {
+      "name": "set_timestamp",
+      "type": "text"
+    },
+    {
+      "name": "informe_designation",
+      "type": "text"
+    }
+  ],
+  "outputType": "array"
+}

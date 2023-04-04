@@ -1,0 +1,16 @@
+{
+  "name": "db_local",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "postgres",
+    "connection": {
+      "host": "localhost",
+      "port": 2030,
+      "user": "postgres",
+      "password": "postgres",
+      "database": "uxulmassgrave"
+    }
+  },
+  "fileName": "db_local.json"
+}

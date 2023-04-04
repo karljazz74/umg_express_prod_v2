@@ -1,0 +1,45 @@
+{
+  "name": "custom_dent",
+  "module": "dbupdater",
+  "action": "custom",
+  "options": {
+    "connection": "db_remote",
+    "sql": {
+      "query": "select id_dental, fk_records, upper_left, upper_right, lower_left, lower_right from db_schema.dental_records",
+      "params": [
+        {
+          "name": ":P1",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "output": true,
+  "meta": [
+    {
+      "name": "id_dental",
+      "type": "string"
+    },
+    {
+      "name": "fk_records",
+      "type": "string"
+    },
+    {
+      "name": "upper_left",
+      "type": "string"
+    },
+    {
+      "name": "upper_right",
+      "type": "string"
+    },
+    {
+      "name": "lower_left",
+      "type": "string"
+    },
+    {
+      "name": "lower_right",
+      "type": "string"
+    }
+  ],
+  "outputType": "array"
+}

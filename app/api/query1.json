@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db_local",
+        "sql": {
+          "type": "SELECT",
+          "columns": [
+            {
+              "table": "db_schema.records",
+              "column": "*"
+            }
+          ],
+          "table": {
+            "name": "db_schema.records"
+          },
+          "primary": "id_record",
+          "joins": [],
+          "query": "SELECT *\nFROM \"db_schema.records\"",
+          "params": []
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "text",
+          "name": "id_record"
+        },
+        {
+          "type": "number",
+          "name": "fk_category"
+        },
+        {
+          "type": "text",
+          "name": "obj_designation"
+        },
+        {
+          "type": "object",
+          "name": "obj_name"
+        },
+        {
+          "type": "text",
+          "name": "obj_status"
+        },
+        {
+          "type": "number",
+          "name": "lote_number"
+        },
+        {
+          "type": "text",
+          "name": "find_location"
+        },
+        {
+          "type": "text",
+          "name": "date_documented"
+        },
+        {
+          "type": "text",
+          "name": "previous_id"
+        },
+        {
+          "type": "object",
+          "name": "description"
+        },
+        {
+          "type": "datetime",
+          "name": "set_timestamp"
+        },
+        {
+          "type": "object",
+          "name": "informe_designation"
+        },
+        {
+          "type": "number",
+          "name": "fk_comments"
+        },
+        {
+          "type": "number",
+          "name": "fk_images"
+        },
+        {
+          "type": "text",
+          "name": "language_status"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

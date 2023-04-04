@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="ac:route" content="/records1">
+    <base href="/">
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Records List View</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+    <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer></script>
+    <link rel="stylesheet" href="/dmxAppConnect/dmxBootstrap5TableGenerator/dmxBootstrap5TableGenerator.css" />
+</head>
+
+<body is="dmx-app" id="main">
+    <dmx-serverconnect id="query_JSON_rem" url="/api/query_JSON5_copy"></dmx-serverconnect>
+    <dmx-serverconnect id="query_json5" url="/api/query_JSON5"></dmx-serverconnect>
+    <dmx-serverconnect id="records2" url="/api/queryJSON"></dmx-serverconnect>
+    <dmx-serverconnect id="records_list" url="/api/queryJSON"></dmx-serverconnect>
+    <header class="bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand ms-auto" href="#">Navbar</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1_collapse" aria-controls="navbar1_collapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbar1_collapse">
+                            <div class="navbar-nav">
+                                <a class="nav-item nav-link active" href="#">Home</a>
+                                <a class="nav-item nav-link" href="#">About</a>
+                                <a class="nav-item nav-link" href="#">Contact</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Table: Records List View</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <include file="partials/formatter.js"></include>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id record</th>
+                            <th>Obj status</th>
+                            <th>Obj name</th>
+                            <th>Lote number</th>
+                            <th>Find location</th>
+                            <th>Date documented</th>
+                            <th>Obj description</th>
+                            <th>Set timestamp</th>
+                            <th>Informe designation</th>
+                        </tr>
+                    </thead>
+                    <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="query_JSON_rem.data.custom" id="tableRepeat2">
+                        <tr>
+                            <td dmx-text="id_record"></td>
+                            <td dmx-text="obj_status"></td>
+                            <td dmx-text="obj_name"></td>
+                            <td dmx-text="lote_number"></td>
+                            <td dmx-text="find_location"></td>
+                            <td dmx-text="date_documented"></td>
+                            <td td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" dmx-text="obj_description" class="w-25"></td>
+                            <td dmx-text="set_timestamp"></td>
+                            <td dmx-text="informe_designation"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div is="dmx-view" id="content">
+            <%- await include(content, locals); %>
+        </div>
+    </main>
+
+    <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

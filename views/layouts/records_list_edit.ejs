@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+    <base href="/">
+    <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/dmxAppConnect/dmxStateManagement/dmxStateManagement.js" defer></script>
+    <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+    <link rel="stylesheet" href="/dmxAppConnect/dmxBootstrap5TableGenerator/dmxBootstrap5TableGenerator.css" />
+    <script src="/dmxAppConnect/dmxBootstrap5PagingGenerator/dmxBootstrap5PagingGenerator.js" defer></script>
+    <script src="/dmxAppConnect/dmxBootstrap5Navigation/dmxBootstrap5Navigation.js" defer></script>
+</head>
+
+<body is="dmx-app" id="paging_test">
+    <dmx-query-manager id="query_paged3"></dmx-query-manager>
+    <dmx-serverconnect id="sc_paged3" url="/api/paged_records1" dmx-param:limit="sc_paged3.data.query.limit" dmx-param:offset="query_paged3.data.offset"></dmx-serverconnect>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id record</th>
+                                <th>Fk category</th>
+                                <th>Obj designation</th>
+                                <th>Obj name</th>
+                                <th>Obj status</th>
+                                <th>Lote number</th>
+                                <th>Find location</th>
+                                <th>Date documented</th>
+                                <th>Previous</th>
+                                <th>Description</th>
+                                <th>Set timestamp</th>
+                                <th>Informe designation</th>
+                                <th>Fk comments</th>
+                                <th>Fk images</th>
+                                <th>Language status</th>
+                                <th>Obj label</th>
+                            </tr>
+                        </thead>
+                        <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="sc_paged3.data.query.data" id="tableRepeat2">
+                            <tr>
+                                <td dmx-text="id_record"></td>
+                                <td dmx-text="fk_category"></td>
+                                <td dmx-text="obj_designation"></td>
+                                <td dmx-text="obj_name"></td>
+                                <td dmx-text="obj_status"></td>
+                                <td dmx-text="lote_number"></td>
+                                <td dmx-text="find_location"></td>
+                                <td dmx-text="date_documented"></td>
+                                <td dmx-text="previous_id"></td>
+                                <td dmx-text="description"></td>
+                                <td dmx-text="set_timestamp"></td>
+                                <td dmx-text="informe_designation"></td>
+                                <td dmx-text="fk_comments"></td>
+                                <td dmx-text="fk_images"></td>
+                                <td dmx-text="language_status"></td>
+                                <td dmx-text="obj_label"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pagination" dmx-populate="sc_paged3.data.query" dmx-state="query_paged3" dmx-offset="offset" dmx-generator="bs5paging">
+                    <li class="page-item" dmx-class:disabled="sc_paged3.data.query.page.current == 1" aria-label="First">
+                        <a href="javascript:void(0)" class="page-link" dmx-on:click="query_paged3.set('offset',sc_paged3.data.query.page.offset.first)"><span aria-hidden="true">&lsaquo;&lsaquo;</span></a>
+                    </li>
+                    <li class="page-item" dmx-class:disabled="sc_paged3.data.query.page.current == 1" aria-label="Previous">
+                        <a href="javascript:void(0)" class="page-link" dmx-on:click="query_paged3.set('offset',sc_paged3.data.query.page.offset.prev)"><span aria-hidden="true">&lsaquo;</span></a>
+                    </li>
+                    <li class="page-item" dmx-class:active="title == sc_paged3.data.query.page.current" dmx-class:disabled="!active" dmx-repeat="sc_paged3.data.query.getServerConnectPagination(2,1,'...')">
+                        <a href="javascript:void(0)" class="page-link" dmx-on:click="query_paged3.set('offset',(page-1)*sc_paged3.data.query.limit)">{{title}}</a>
+                    </li>
+                    <li class="page-item" dmx-class:disabled="sc_paged3.data.query.page.current ==  sc_paged3.data.query.page.total" aria-label="Next">
+                        <a href="javascript:void(0)" class="page-link" dmx-on:click="query_paged3.set('offset',sc_paged3.data.query.page.offset.next)"><span aria-hidden="true">&rsaquo;</span></a>
+                    </li>
+                    <li class="page-item" dmx-class:disabled="sc_paged3.data.query.page.current ==  sc_paged3.data.query.page.total" aria-label="Last">
+                        <a href="javascript:void(0)" class="page-link" dmx-on:click="query_paged3.set('offset',sc_paged3.data.query.page.offset.last)"><span aria-hidden="true">&rsaquo;&rsaquo;</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div is="dmx-view" id="content">
+        <%- await include(content, locals); %>
+    </div>
+    <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
